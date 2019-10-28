@@ -1,0 +1,98 @@
+﻿using System;
+
+namespace JogoDaVelhaOO
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+			Tabuleiro tb = new Tabuleiro();
+			Jogador j1 = new Jogador();
+			j1.TipoJogada = "X";
+			
+			
+			Jogador j2 = new Jogador();
+			j2.TipoJogada = "O";
+			
+			Jogador jogadorDaVez = null;
+
+			
+			
+			int opcao;
+			
+			do{
+			Console.WriteLine("====================");
+			Console.WriteLine("Digite uma opção: \n1. NOVO JOGO\n2. SAIR");
+			Console.WriteLine("====================");
+			opcao = Convert.ToInt32(Console.ReadLine());
+			
+			tb.MontarTabuleiro();
+				
+			switch(opcao){
+			case 1:
+			
+			bool primeiroJogador = true;
+			
+			int cntd=0;
+			
+			Console.WriteLine("NOVO JOGO");
+			
+			while (cntd != 9){
+			Jogada jgda = new Jogada();
+			
+			Console.WriteLine("Digite a posicao");
+			jgda.posicao = Convert.ToInt32(Console.ReadLine());
+			
+			if(primeiroJogador){
+			jogadorDaVez = j1;
+			}else{
+				jogadorDaVez = j2;
+			}
+			jgda.Jogador = jogadorDaVez;
+			
+			
+			if(jgda.posicao>0 && jgda.posicao<10){
+			if(tb.validarJogada(jgda)){
+				tb.criarJogada(jgda);
+				
+				Console.Clear();
+				tb.imprimir();	
+				cntd++;
+				primeiroJogador=!primeiroJogador;
+	    		
+			}
+			else{	Console.WriteLine("CASA VALIDA");}
+				
+			}
+			
+			else{
+				Console.WriteLine("POSIÇÃO INVALIDA");
+				tb.imprimir();}
+				
+				
+				if(tb.Vencedor(cntd) == true){
+					
+					Console.WriteLine("Jogador "+ jogadorDaVez.TipoJogada+" Ganhou!!");
+					
+					cntd = 9;
+				}
+				
+			
+			}
+			
+			break;
+			case 2:
+			Console.WriteLine("SAIR");
+			break;
+			default:
+			Console.WriteLine("OPÇÃO INVALIDA");
+			break;
+			}
+			}
+			while (opcao!=3);
+			
+		}
+    }
+}
+

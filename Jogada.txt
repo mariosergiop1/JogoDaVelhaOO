@@ -1,0 +1,28 @@
+using System;
+
+namespace JogoDaVelhaOO
+{
+	class Jogada
+		{
+		
+		public Jogador jogador;
+		public int posicao;
+		
+		
+		public int Posicao{ 
+		get{return posicao;}
+		set{posicao = value;} }
+		
+		public Jogador Jogador{
+		get{return jogador;}
+		set{jogador = value;}
+		}
+		
+		
+		
+		
+		
+		}
+		
+		
+	}

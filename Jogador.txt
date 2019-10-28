@@ -1,0 +1,25 @@
+using System;
+
+namespace JogoDaVelhaOO
+{
+	class Jogador
+	{
+	
+	public string tipoJogada;
+	
+	
+	public string TipoJogada {
+		
+	get{return tipoJogada;}
+	set{tipoJogada = value;}
+	
+	}
+	
+	
+	
+	
+	
+	
+		}
+		
+	}
